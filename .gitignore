@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 
 # Trained Model Files
-.h5
+*.h5
