@@ -12,16 +12,17 @@ import numpy as np
 sys.path.append('ssd_keras')
 from trained_models.coco_300 import Coco300
 
+# from predict_utils.predict_thread import PredictThread
 
 MAX_PACKET_SIZE = 65536
 
 # FOR RECEIVING
-HOST, PORT = "", 12346
+HOST, PORT = "", 12000
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((HOST, PORT))
 
 # FOR SENDING
-SEND_IP, SEND_PORT = '192.168.100.113', 12345
+SEND_IP, SEND_PORT = '192.168.100.101', 12000
 send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 def recv_single_packet_jpg(sock):
@@ -48,10 +49,10 @@ def recv_single_packet_jpg(sock):
     frame = np.array(Image.open(jpg_stream))
 
     # Convert from BGR to RGB
-    frame = frame[:,:,::-1]
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     # Flip the image
-    frame = cv2.flip(frame, 0)
+    # frame = cv2.flip(frame, 0)
     return camera_world_matrix, projection_matrix, frame
 
 def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_points):
@@ -59,9 +60,6 @@ def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_poi
     pred_size = len(bytearray(pred_bytes))
     pred_size_bytes = struct.pack('<i', pred_size)
     message = camera_world_matrix + projection_matrix + pred_size_bytes + pred_bytes
-
-    print("Pred Size: ", pred_size)
-    print("Message size: ", len(bytearray(message)))
 
     send_sock.sendto(message, (SEND_IP, SEND_PORT))    
 
