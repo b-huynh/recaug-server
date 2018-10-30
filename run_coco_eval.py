@@ -9,7 +9,7 @@ if __name__ == "__main__":
     model = Coco300()
 
     cam = cv2.VideoCapture(0)
-    cam.set(cv2.CAP_PROP_FPS, 20)
+    cam.set(cv2.CAP_PROP_FPS, 30)
 
     try:
         while True:

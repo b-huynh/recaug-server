@@ -22,7 +22,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((HOST, PORT))
 
 # FOR SENDING
-SEND_IP, SEND_PORT = '192.168.100.101', 12000
+SEND_IP, SEND_PORT = '192.168.2.238', 12000
 send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 def recv_single_packet_jpg(sock):

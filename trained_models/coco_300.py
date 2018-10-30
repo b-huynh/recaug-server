@@ -41,7 +41,7 @@ class Coco300(object):
 
         # Config custom session params
         # config = tf.ConfigProto()
-        # config.gpu_options.per_process_gpu_memory_fraction = 0.9
+        # config.gpu_options.per_process_gpu_memory_fraction = 0.7
         # K.set_session(tf.Session(config=config))
 
         self._model = ssd_300(image_size=(self.IMG_HEIGHT, self.IMG_WIDTH, 3),
