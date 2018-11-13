@@ -25,7 +25,7 @@ if __name__ == "__main__":
             coco_predictions = model.predict(img)
 
             # Visualize on original image
-            coco_predictions.visualize(img)
+            # coco_predictions.visualize(img)
 
             cv2.imshow('Predictions', img)
             # cv2.imshow('Webcam', img)

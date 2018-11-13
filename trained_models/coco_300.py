@@ -40,9 +40,9 @@ class Coco300(object):
         K.clear_session() # Clear previous models from memory.
 
         # Config custom session params
-        # config = tf.ConfigProto()
-        # config.gpu_options.per_process_gpu_memory_fraction = 0.7
-        # K.set_session(tf.Session(config=config))
+        config = tf.ConfigProto()
+        config.gpu_options.per_process_gpu_memory_fraction = 0.8
+        K.set_session(tf.Session(config=config))
 
         self._model = ssd_300(image_size=(self.IMG_HEIGHT, self.IMG_WIDTH, 3),
                         n_classes=80,
