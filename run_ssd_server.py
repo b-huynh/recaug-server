@@ -116,11 +116,11 @@ def single_packet_loop(sock):
             model.close()
             break
 
-        counter += 1
-        if (time.time() - start_time) > x :
-            fps = counter / (time.time() - start_time)
-            counter = 0
-            start_time = time.time()
+        # counter += 1
+        # if (time.time() - start_time) > x :
+        #     fps = counter / (time.time() - start_time)
+        #     counter = 0
+        #     start_time = time.time()
 
 try:
 
