@@ -82,7 +82,7 @@ def object_detection_worker(input_deque, output_deque, stop_event):
 
 class ObjectDetector(object):
 
-    def __init__(self):
+    def __init__(self, threshold = 0.5):
         # self.in_q = queue.Queue(maxsize = 1)
         # self.out_q = queue.Queue(maxsize = 1)
 
@@ -94,6 +94,7 @@ class ObjectDetector(object):
         self.t.start()
 
         self._latest_result = None
+        self._threshold = threshold
 
     @property
     def result_ready(self):
@@ -103,9 +104,8 @@ class ObjectDetector(object):
     def latest_result(self):
         try:
             out_img, pred_dict = self.out_q.pop()
-            coco_pred = CocoPredictions()
+            coco_pred = CocoPredictions(threshold=self._threshold)
             coco_pred.init_from_tf_od(out_img, pred_dict)
-            # self._latest_result = (out_img, pred_dict)
             self._latest_result = (out_img, coco_pred)
         except IndexError:
             pass

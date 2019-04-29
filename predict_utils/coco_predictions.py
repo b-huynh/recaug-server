@@ -22,13 +22,14 @@ PredictedBox = namedtuple('PredictedBox', ['class_id', 'class_name', 'confidence
 
 class CocoPredictions(object):
     """Wrapper around predicted output from coco SSD models"""
-    def __init__(self):
+    def __init__(self, threshold=0.5):
         self._predictions = []
+        self._threshold = threshold
 
     def init_from_tf_od(self, img, pred):
         for i in range(0, len(pred['detection_classes'])):
             confidence = pred['detection_scores'][i]
-            if confidence < 0.5:
+            if confidence < self._threshold:
                 continue
 
             class_id = pred['detection_classes'][i]
