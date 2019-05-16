@@ -22,11 +22,18 @@ PredictedBox = namedtuple('PredictedBox', ['class_id', 'class_name', 'confidence
 
 class CocoPredictions(object):
     """Wrapper around predicted output from coco SSD models"""
-    def __init__(self, threshold=0.5):
+    def __init__(self, threshold=0.5, single_instance=False):
         self._predictions = []
         self._threshold = threshold
+        self._single_instance = single_instance
 
     def init_from_tf_od(self, img, pred):
+        if self._single_instance:
+            self._filter_confidence_single(img, pred)
+        else:
+            self._filter_confidence(img, pred)
+
+    def _filter_confidence(self, img, pred):
         for i in range(0, len(pred['detection_classes'])):
             confidence = pred['detection_scores'][i]
             if confidence < self._threshold:
@@ -42,23 +49,39 @@ class CocoPredictions(object):
             ymin, xmin, ymax, xmax = (ymin * height, xmin * width,
                                       ymax * height, xmax * width)
 
-            p = PredictedBox(class_id, class_name, confidence, xmin, ymin, xmax, ymax)
+            p = PredictedBox(
+                class_id, class_name, confidence, xmin, ymin, xmax, ymax)
             self._predictions.append(p)
 
-    # def init_from_ssd_keras(self, pred, orig_shape, ssd_height, ssd_width):
-    #     for box in pred[0]:
-    #         # Transform the predicted bounding boxes for the 300x300 image to the original image dimensions.
-    #         xmin = box[-4] * orig_shape[1] / ssd_width
-    #         ymin = box[-3] * orig_shape[0] / ssd_height
-    #         xmax = box[-2] * orig_shape[1] / ssd_width
-    #         ymax = box[-1] * orig_shape[0] / ssd_height
-            
-    #         # Predicted class and confidence
-    #         class_id = int(box[0])
-    #         class_name = get_classname(class_id)
-    #         confidence = box[1]
-            
-    #         self._predictions.append(PredictedBox(class_id, class_name, confidence, xmin, ymin, xmax, ymax))
+    def _filter_confidence_single(self, img, pred):
+        # Dictionary to ensure keeping only highest confidence prediction
+        confidence_map = {}  # key: string, value: (float, PredictedBox)
+
+        for i in range(0, len(pred['detection_classes'])):
+            confidence = pred['detection_scores'][i]
+            if confidence < self._threshold:
+                continue
+
+            class_id = pred['detection_classes'][i]
+            if class_id in category_index.keys():
+                class_name = category_index[class_id]['name']
+
+            if (class_name in confidence_map.keys() and 
+                confidence < confidence_map[class_name][0]):
+                continue
+
+            box = pred['detection_boxes'][i]
+            ymin, xmin, ymax, xmax = box
+            height, width, _ = img.shape
+            ymin, xmin, ymax, xmax = (ymin * height, xmin * width,
+                                      ymax * height, xmax * width)
+
+            p = PredictedBox(
+                class_id, class_name, confidence,xmin, ymin, xmax,ymax)
+            confidence_map[class_name] = (confidence, p)
+
+        # Convert confidence map to list of predictions
+        self._predictions.extend([x[1] for x in confidence_map.values()])
 
     def visualize(self, canvas):
         for pbox in self._predictions:

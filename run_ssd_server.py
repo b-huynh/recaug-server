@@ -20,13 +20,35 @@ MAX_PACKET_SIZE = 65536
 # FOR RECEIVING
 HOST, PORT = "", 12000
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# sock.settimeout(0.033) # 1/30th of a second for 30 FPS
 sock.bind((HOST, PORT))
+
 
 # FOR SENDING
 SEND_IP, SEND_PORT = '192.168.2.238', 12000
 send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-def recv_single_packet_jpg(sock):
+class NetStatsTracker(object):
+    def __init__(self, check_rate=900):
+        self._check_rate = check_rate
+        self._check_idx = 0
+        self._jpg_running_total = 0
+        self._avg_jpg_size = 0
+
+    def update(self, jpg_size):
+        self._check_idx += 1
+        self._jpg_running_total += jpg_size
+        if self._check_idx % self._check_rate == 0:
+            self._avg_jpg_size = self._jpg_running_total / self._check_rate
+            self._check_idx = 0
+            self._jpg_running_total = 0
+            print("[NetStats] Avg JPG Size: {:.2f} bytes".format(self._avg_jpg_size))
+ 
+    @property
+    def avg_jpg_size(self):
+        return self._avg_jpg_size
+
+def recv_single_packet_jpg(sock, netstats = None):
     data, _ = sock.recvfrom(MAX_PACKET_SIZE)
     
     # Index for current reading location in buffer
@@ -52,6 +74,9 @@ def recv_single_packet_jpg(sock):
     # Convert from BGR to RGB
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
+    if netstats:
+        netstats.update(jpg_size)
+
     # Flip the image
     # frame = cv2.flip(frame, 0)
     return camera_world_matrix, projection_matrix, frame
@@ -65,28 +90,24 @@ def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_poi
     send_sock.sendto(message, (SEND_IP, SEND_PORT))    
 
 def single_packet_loop(sock):
-    # model = Coco300() 
-
-    model = ObjectDetector()
+    model = ObjectDetector(threshold=0.85, single_instance=True)
 
     start_time = time.time()
     x = 1 # displays the frame rate every 1 second
     counter = 0
     fps = 0
 
-    window_name = 'Server Debug Frames'
+    window_name = 'Hololens Webcam Frames (Debug)'
     # Show empty frame to start OpenCV render loop
     # black_frame = np.zeros((504, 896, 3)).astype(int)
     
     # cv2.imshow(window_name, black_frame)
 
-    while True:
-        camera_world_matrix, projection_matrix, frame = recv_single_packet_jpg(sock)
-        
-        # Make and visualize predictions
-        # predictions = model.predict(frame)
-        # predictions.visualize(frame)
-        # predicted_points = predictions.get_predicted_points()
+    netstats = NetStatsTracker(check_rate=450)
+
+    while True:  
+        camera_world_matrix, projection_matrix, frame = recv_single_packet_jpg(
+            sock, netstats=netstats)
 
         model.enqueue(frame)
 
@@ -95,7 +116,8 @@ def single_packet_loop(sock):
             predicted_points = predictions.get_predicted_points()
 
             # Send the predictions back to client
-            send_frame_predictions(camera_world_matrix, projection_matrix, predicted_points)
+            send_frame_predictions(camera_world_matrix, projection_matrix,
+                predicted_points)
 
             # Debug Visualizations
             predictions.visualize(out_img)
@@ -116,15 +138,7 @@ def single_packet_loop(sock):
             model.close()
             break
 
-        # counter += 1
-        # if (time.time() - start_time) > x :
-        #     fps = counter / (time.time() - start_time)
-        #     counter = 0
-        #     start_time = time.time()
-
 try:
-
-
     single_packet_loop(sock)
 except KeyboardInterrupt:
     pass
