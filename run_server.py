@@ -1,31 +1,34 @@
-import socket
-import sys
 import io
-import time
-import struct
 import json
+import socket
+import struct
+import sys
+import time
+import urllib
 
-from PIL import Image
 import cv2
 import numpy as np
+from PIL import Image
 
-# sys.path.append('ssd_keras')
-# from trained_models.coco_300 import Coco300
 from trained_models.od_thread import ObjectDetector
-
-# from predict_utils.predict_thread import PredictThread
 
 MAX_PACKET_SIZE = 65536
 
-# FOR RECEIVING
-HOST, PORT = "", 12000
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# sock.settimeout(0.033) # 1/30th of a second for 30 FPS
-sock.bind((HOST, PORT))
+# GET CONFIG
+CONFIG_URL = 'http://192.168.2.134:8080/config.json'
+result = urllib.request.urlopen(CONFIG_URL)
+data = result.read().decode('utf-8')
+CONFIG = json.loads(data)
 
+# FOR RECEIVING
+SERVER_ADDR = ""
+SERVER_PORT = int(CONFIG['System']['ObjectTrackingPort'])
+recv_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+recv_sock.bind((SERVER_ADDR, SERVER_PORT))
 
 # FOR SENDING
-SEND_IP, SEND_PORT = '192.168.2.238', 12000
+CLIENT_ADDR = CONFIG['System']['ClientIP']
+CLIENT_PORT = int(CONFIG['System']['ObjectTrackingPort'])
 send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 class NetStatsTracker(object):
@@ -48,8 +51,8 @@ class NetStatsTracker(object):
     def avg_jpg_size(self):
         return self._avg_jpg_size
 
-def recv_single_packet_jpg(sock, netstats = None):
-    data, _ = sock.recvfrom(MAX_PACKET_SIZE)
+def recv_single_packet_jpg(recv_sock, netstats = None):
+    data, _ = recv_sock.recvfrom(MAX_PACKET_SIZE)
     
     # Index for current reading location in buffer
     ind = 0 
@@ -87,7 +90,7 @@ def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_poi
     pred_size_bytes = struct.pack('<i', pred_size)
     message = camera_world_matrix + projection_matrix + pred_size_bytes + pred_bytes
 
-    send_sock.sendto(message, (SEND_IP, SEND_PORT))    
+    send_sock.sendto(message, (CLIENT_ADDR, CLIENT_PORT))    
 
 def single_packet_loop(sock):
     model = ObjectDetector(threshold=0.85, single_instance=True)
@@ -138,7 +141,8 @@ def single_packet_loop(sock):
             model.close()
             break
 
-try:
-    single_packet_loop(sock)
-except KeyboardInterrupt:
-    pass
+if __name__ == '__main__':
+    try:
+        single_packet_loop(recv_sock)
+    except KeyboardInterrupt:
+        pass
