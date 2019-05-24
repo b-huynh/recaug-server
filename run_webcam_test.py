@@ -16,6 +16,10 @@ if __name__ == "__main__":
         while True:
             ret, frame = cam.read() # OpenCV natively uses numpy array
 
+            if frame is None:
+                print("No frames received...")
+                sys.exit()
+
             model.enqueue(frame)
 
             if model.result_ready:
