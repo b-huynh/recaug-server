@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import socket
 import struct
 import sys
@@ -34,6 +35,9 @@ send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Object Detection Params
 CONFIDENCE_THRESHOLD = CONFIG['System']['ConfidenceThreshold']
+
+# For Logging/Simulation
+USERDATA_PATH = os.path.join(os.getcwd(), 'userdata')
 
 class NetStatsTracker(object):
     def __init__(self, check_rate=900):
@@ -104,9 +108,6 @@ def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_poi
 
     send_sock.sendto(message, (CLIENT_ADDR, CLIENT_PORT))    
 
-CURR_SESSION_UUID = -1
-CURR_LOGFILE = None
-
 def recv_message(recv_sock, netstats = None):
     data, _ = recv_sock.recvfrom(MAX_PACKET_SIZE)
 
@@ -115,15 +116,15 @@ def recv_message(recv_sock, netstats = None):
     if netstats:
         netstats.update(message.payload_size)
     
-    # if message.header['sessionUUID'] is not CURR_SESSION_UUID:
-    #     CURR_SESSION_UUID = message.header['sessionUUID']
-    #     if CURR_LOGFILE is not None:
-    #         CURR_LOGFILE.close()
-    #     CURR_LOGFILE = open('{0}.vid'.format(CURR_SESSION_UUID), )
+    session_path = os.path.join(USERDATA_PATH, message.header['sessionUUID'])
+    if not os.path.isdir(session_path):
+        os.mkdir(session_path)
 
-    # if CURR_SESSION_UUID is not -1:
+    file_name = '{0:06d}.jpg'.format(message.header['frameID'])
+    file_path = os.path.join(session_path, file_name)
+    with open(file_path, 'wb') as f:
+        f.write(message.payload)
 
-    
     return message
 
 def send_message(message):
