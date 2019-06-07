@@ -162,6 +162,15 @@ def single_packet_loop(sock):
             out_message, predictions = model.latest_result
             predicted_points = predictions.get_predicted_points()
 
+            # Add RGB to points
+            for label_dict in predicted_points["labels"]:
+                xcen = label_dict["xcen"]
+                ycen = label_dict["ycen"]
+                cen_r, cen_g, cen_b = out_message.frame[ycen][xcen]
+                label_dict["cen_r"] = float(cen_r) / 255.0
+                label_dict["cen_g"] = float(cen_g) / 255.0
+                label_dict["cen_b"] = float(cen_b) / 255.0
+
             out_message.update_timestamp('frameProcessedTimestamp')
             out_message.to_result(predicted_points)
             # Send the predictions back to client
