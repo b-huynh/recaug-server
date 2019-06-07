@@ -4,11 +4,20 @@
         "ClientIP": "192.168.2.238",
         "ObjectTrackingPort": "12000",
         "EyeTrackingPort": "13000",
-        "DebugLogPort": "9999"
+        "DebugLogPort": "9999",
+        "ConfidenceThreshold": 0.5,
+        "MaxObjectRadius": 0.4,
+        "GeometryCapacity": 300,
+        "FilterWindowSize": 120,
+        "FilterWindowMinCount": 20,
+        "FilterMinDist": 0.2
     },
     "UI": {
-        "ConfirmTimeout": 20.0,
-        "FocusConfirmTime": 1.0
+        "ConfirmTimeout": 5.0,
+        "FocusConfirmTime": 1.0,
+        "PositionUpdateRate": 1.0,
+        "DeterminePoseMethod": "latest",
+        "MedianAverageWindow": 30
     },
     "Experiment": {
         "_targetLanguage": "Japanese",

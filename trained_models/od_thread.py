@@ -40,7 +40,8 @@ def inference_loop(graph, input_deque, output_deque, stop_event):
 
             while not stop_event.is_set():
                 try: 
-                    image = input_deque.pop()
+                    msg = input_deque.pop()
+                    image = msg.frame
                     # image = in_buf
 
                     # Handle for input image
@@ -56,7 +57,7 @@ def inference_loop(graph, input_deque, output_deque, stop_event):
                     output_dict['detection_boxes'] = output_dict['detection_boxes'][0]
                     output_dict['detection_scores'] = output_dict['detection_scores'][0]
 
-                    output_deque.append((image, output_dict))
+                    output_deque.append((msg, output_dict))
                 except IndexError:
                     continue
                 except Exception as e:
@@ -104,17 +105,17 @@ class ObjectDetector(object):
     @property
     def latest_result(self):
         try:
-            out_img, pred_dict = self.out_q.pop()
+            msg, pred_dict = self.out_q.pop()
             coco_pred = CocoPredictions(threshold=self._threshold,
                 single_instance=self._single_instance)
-            coco_pred.init_from_tf_od(out_img, pred_dict)
-            self._latest_result = (out_img, coco_pred)
+            coco_pred.init_from_tf_od(msg.frame, pred_dict)
+            self._latest_result = (msg, coco_pred)
         except IndexError:
             pass
         return self._latest_result
 
-    def enqueue(self, img):
-        self.in_q.append(img)
+    def enqueue(self, msg):
+        self.in_q.append(msg)
 
     def close(self):
         self.stop_event.set()

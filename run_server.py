@@ -11,6 +11,7 @@ import numpy as np
 from PIL import Image
 
 from trained_models.od_thread import ObjectDetector
+from networking.messages import CameraFrameMessage
 
 MAX_PACKET_SIZE = 65536
 
@@ -30,6 +31,9 @@ recv_sock.bind((SERVER_ADDR, SERVER_PORT))
 CLIENT_ADDR = CONFIG['System']['ClientIP']
 CLIENT_PORT = int(CONFIG['System']['ObjectTrackingPort'])
 send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+# Object Detection Params
+CONFIDENCE_THRESHOLD = CONFIG['System']['ConfidenceThreshold']
 
 class NetStatsTracker(object):
     def __init__(self, check_rate=900):
@@ -54,35 +58,43 @@ class NetStatsTracker(object):
 def recv_single_packet_jpg(recv_sock, netstats = None):
     data, _ = recv_sock.recvfrom(MAX_PACKET_SIZE)
     
-    # Index for current reading location in buffer
-    ind = 0 
-    # 4x4 matrix of 4 byte floats
-    matrix_size = 64
-    # Lambda for array slicing
-    bufread = lambda buf, start, length: buf[start:start+length]
+    # # Index for current reading location in buffer
+    # ind = 0 
+    # # 4x4 matrix of 4 byte floats
+    # matrix_size = 64
+    # # Lambda for array slicing
+    # bufread = lambda buf, start, length: buf[start:start+length]
 
-    # Read transformation matrices
-    camera_world_matrix = bufread(data, ind, matrix_size)
-    ind += matrix_size
-    projection_matrix = bufread(data, ind, matrix_size)
-    ind += matrix_size
+    # # Read transformation matrices
+    # camera_world_matrix = bufread(data, ind, matrix_size)
+    # ind += matrix_size
+    # projection_matrix = bufread(data, ind, matrix_size)
+    # ind += matrix_size
 
-    # Read jpg
-    jpg_size = int.from_bytes(bufread(data, ind, 4), byteorder='little')
-    ind += 4
-    jpg_data = bufread(data, ind, jpg_size)
-    jpg_stream = io.BytesIO(jpg_data)
-    frame = np.array(Image.open(jpg_stream))
+    # # Read jpg
+    # jpg_size = int.from_bytes(bufread(data, ind, 4), byteorder='little')
+    # ind += 4
+    # jpg_data = bufread(data, ind, jpg_size)
+    # jpg_stream = io.BytesIO(jpg_data)
+    # frame = np.array(Image.open(jpg_stream))
 
-    # Convert from BGR to RGB
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    # # Convert from BGR to RGB
+    # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    if netstats:
-        netstats.update(jpg_size)
+    # if netstats:
+    #     netstats.update(jpg_size)
 
     # Flip the image
     # frame = cv2.flip(frame, 0)
-    return camera_world_matrix, projection_matrix, frame
+
+    message = CameraFrameMessage.from_bytes(data)
+    if netstats:
+        netstats.update(message.payload_size)
+
+    camera2world = message.header["camera2World"]
+    projection = message.header["projection"]
+
+    return camera2world, projection, message.frame
 
 def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_points):
     pred_bytes = json.dumps(predicted_points).encode()
@@ -92,8 +104,35 @@ def send_frame_predictions(camera_world_matrix, projection_matrix, predicted_poi
 
     send_sock.sendto(message, (CLIENT_ADDR, CLIENT_PORT))    
 
+CURR_SESSION_UUID = -1
+CURR_LOGFILE = None
+
+def recv_message(recv_sock, netstats = None):
+    data, _ = recv_sock.recvfrom(MAX_PACKET_SIZE)
+
+    message = CameraFrameMessage.from_bytes(data)
+    message.update_timestamp('frameReceiveTimestamp')
+    if netstats:
+        netstats.update(message.payload_size)
+    
+    # if message.header['sessionUUID'] is not CURR_SESSION_UUID:
+    #     CURR_SESSION_UUID = message.header['sessionUUID']
+    #     if CURR_LOGFILE is not None:
+    #         CURR_LOGFILE.close()
+    #     CURR_LOGFILE = open('{0}.vid'.format(CURR_SESSION_UUID), )
+
+    # if CURR_SESSION_UUID is not -1:
+
+    
+    return message
+
+def send_message(message):
+    message.update_timestamp('resultsSendTimestamp')
+    message_bytes = message.to_bytes()
+    send_sock.sendto(message_bytes, (CLIENT_ADDR, CLIENT_PORT))
+
 def single_packet_loop(sock):
-    model = ObjectDetector(threshold=0.85, single_instance=True)
+    model = ObjectDetector(threshold=CONFIDENCE_THRESHOLD, single_instance=True)
 
     start_time = time.time()
     x = 1 # displays the frame rate every 1 second
@@ -108,29 +147,37 @@ def single_packet_loop(sock):
 
     netstats = NetStatsTracker(check_rate=450)
 
-    while True:  
-        camera_world_matrix, projection_matrix, frame = recv_single_packet_jpg(
-            sock, netstats=netstats)
+    # Write bytes to file
 
-        model.enqueue(frame)
+    while True:  
+        # camera_world_matrix, projection_matrix, frame = recv_single_packet_jpg(
+        #     sock, netstats=netstats)
+
+        message = recv_message(sock, netstats=netstats)
+
+        model.enqueue(message)
 
         if model.result_ready:
-            out_img, predictions = model.latest_result
+            out_message, predictions = model.latest_result
             predicted_points = predictions.get_predicted_points()
 
+            out_message.update_timestamp('frameProcessedTimestamp')
+            out_message.to_result(predicted_points)
             # Send the predictions back to client
-            send_frame_predictions(camera_world_matrix, projection_matrix,
-                predicted_points)
+            # send_frame_predictions(camera_world_matrix, projection_matrix,
+            #     predicted_points)
+            
+            send_message(out_message)
 
             # Debug Visualizations
-            predictions.visualize(out_img)
+            predictions.visualize(out_message.frame)
             
             # FPS
             font = cv2.FONT_HERSHEY_SIMPLEX
             display_str = 'FPS: {:.1f}'.format(fps)
-            cv2.putText(frame, display_str, (10,500), font, 1, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(out_message.frame, display_str, (10,500), font, 1, (255,255,255), 2, cv2.LINE_AA)
 
-            cv2.imshow(window_name, out_img)    
+            cv2.imshow(window_name, out_message.frame)    
             counter += 1
             if (time.time() - start_time) > x :
                 fps = counter / (time.time() - start_time)
