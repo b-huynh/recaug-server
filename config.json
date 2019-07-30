@@ -1,7 +1,7 @@
 {
     "System": {
-        "ServerIP": "192.168.2.134",
-        "ClientIP": "192.168.2.238",
+        "ServerIP": "192.168.100.108",
+        "ClientIP": "192.168.100.121",
         "ObjectTrackingPort": "12000",
         "EyeTrackingPort": "13000",
         "DebugLogPort": "9999",

@@ -15,7 +15,7 @@ from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
-# sys.path.append("C:\\Users\\yukib\\Projects\\recaug-server")
+import config_server
 from predict_utils.coco_predictions import CocoPredictions
 
 import threading
@@ -64,8 +64,7 @@ def inference_loop(graph, input_deque, output_deque, stop_event):
                     raise e
 
 def object_detection_worker(input_deque, output_deque, stop_event):
-    MODEL_DIR = "C:\\Users\\yukib\\Projects\\recaug-server\\trained_models\\trained_weights\\ssd_mobilenet_v1_coco_2018_01_28"
-    PATH_TO_FROZEN_GRAPH = os.path.join(MODEL_DIR, 'frozen_inference_graph.pb')
+    PATH_TO_FROZEN_GRAPH = os.path.join(config_server.MODEL_DIR, 'frozen_inference_graph.pb')
 
     try:
         # Load model
