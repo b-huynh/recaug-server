@@ -3,21 +3,12 @@ from collections import namedtuple
 
 import cv2
 
-# from ssd_keras.eval_utils.coco_utils import get_coco_category_maps
-# dir_path, _ = os.path.split(__file__)
-# ann_path = os.path.join(dir_path, "annotations", "instances_val2017.json")
-# cats_to_classes, classes_to_cats, cats_to_names, classes_to_names = get_coco_category_maps(ann_path)
-
 from object_detection.utils import label_map_util
-from object_detection.utils import visualization_utils as vis_util
 
-import config_server
-
-labels_path = os.path.join(config_server.MODEL_DATA_DIR, 'mscoco_label_map.pbtxt')
+dirname = os.path.dirname(__file__)
+labels_path = os.path.join(dirname, 'mscoco_label_map.pbtxt')
+# labels_path = os.path.join(config_server.MODEL_DATA_DIR, 'mscoco_label_map.pbtxt')
 category_index = label_map_util.create_category_index_from_labelmap(labels_path, use_display_name=True)
-
-# def get_classname(class_id):
-#     return classes_to_names[class_id]
 
 # Wrapper for predicted box values
 PredictedBox = namedtuple('PredictedBox', ['class_id', 'class_name', 'confidence', 'xmin', 'ymin', 'xmax', 'ymax'])

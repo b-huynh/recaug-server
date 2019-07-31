@@ -11,10 +11,8 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from server.frame_server import FrameServer
-from server.static_server import StaticServer
-from server.stats import FPSTracker, NetStatsTracker
-from trained_models.od_thread import ObjectDetector
+from recaug.models import ObjectDetector
+from recaug.server import FrameServer, StaticServer, FPSTracker
 
 CONFIG_URL = 'http://192.168.100.108:8080/config.json'
 WINDOW_NAME = 'Hololens Webcam Frames (Debug)'
@@ -49,7 +47,9 @@ def main():
     config = json.loads(data)
 
     confidence_threshold = config['System']['ConfidenceThreshold']
-    model = ObjectDetector(threshold=confidence_threshold, single_instance=True)
+    model = ObjectDetector(
+        'ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03',
+        threshold=confidence_threshold, single_instance=True)
     frame_server = FrameServer(config)
     
     fps = FPSTracker()

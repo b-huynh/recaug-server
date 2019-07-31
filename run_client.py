@@ -5,7 +5,7 @@ import urllib
 
 import cv2
 
-from server.messages import CameraFrameMessage
+from recaug.server import CameraFrameMessage
 
 valid_header = {
     "type": "frame",
@@ -23,6 +23,8 @@ def create_valid_message(frame_bytes):
 if __name__ == "__main__":
     cam = cv2.VideoCapture(0)
     cam.set(cv2.CAP_PROP_FPS, 30)
+    # cam.set(cv2.CAP_PROP_FRAME_WIDTH, 896)
+    # cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 504)
 
     result = open('config.json', 'rb')
     data = result.read().decode('utf-8')
