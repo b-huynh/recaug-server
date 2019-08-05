@@ -6,19 +6,7 @@ import urllib
 import cv2
 
 from recaug.server import CameraFrameMessage
-
-valid_header = {
-    "type": "frame",
-    "sessionUUID": "python_client",
-    "payloadSize": 0
-}
-
-def create_valid_message(frame_bytes):
-    message = CameraFrameMessage()
-    valid_header['payloadSize'] = len(bytearray(frame_bytes))
-    message.header = valid_header
-    message.payload = frame_bytes
-    return message
+from recaug.server.utils import create_valid_message
 
 if __name__ == "__main__":
     cam = cv2.VideoCapture(0)
@@ -33,7 +21,13 @@ if __name__ == "__main__":
     # Initialize send socket
     client_addr = '192.168.100.108'
     client_port = int(config['System']['ObjectTrackingPort'])
+    log_port = int(config['System']['DebugLogPort'])
     send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    def debug_log(s):
+        send_sock.sendto(s.encode('utf-8'), (client_addr, log_port))
+
+    debug_log("Starting Python Client")
 
     try:
         while True:
@@ -50,6 +44,7 @@ if __name__ == "__main__":
             message = create_valid_message(frame_bytes)
             message_bytes = message.to_bytes()
             send_sock.sendto(message_bytes, (client_addr, client_port))
+            debug_log("Sent {} bytes".format(len(message_bytes)))
             
             if cv2.waitKey(1) == ord('q'):
                 break

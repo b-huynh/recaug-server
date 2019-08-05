@@ -12,7 +12,8 @@ import numpy as np
 from PIL import Image
 
 from recaug.models import ObjectDetector
-from recaug.server import FrameServer, StaticServer, FPSTracker
+from recaug.server import AppLogServer, CameraFrameMessage, FrameServer, StaticServer, FPSTracker
+from recaug.server.utils import create_valid_message
 
 CONFIG_URL = 'http://192.168.100.108:8080/config.json'
 WINDOW_NAME = 'Hololens Webcam Frames (Debug)'
@@ -37,14 +38,18 @@ def update_point_colors(out_message, predicted_points):
         label_dict["cen_b"] = float(cen_b) / 255.0
 
 def main():
-    static_server = StaticServer('0.0.0.0', 8080)
-    static_server.start()
-
     # Get config
     # result = urllib.request.urlopen(CONFIG_URL)
     result = open('config.json', 'rb')
     data = result.read().decode('utf-8')
     config = json.loads(data)
+
+    app_log_port = int(config['System']['DebugLogPort'])
+    app_log_server = AppLogServer('0.0.0.0', app_log_port)
+    app_log_server.start()
+
+    static_server = StaticServer('0.0.0.0', 8080)
+    static_server.start()
 
     confidence_threshold = config['System']['ConfidenceThreshold']
     model = ObjectDetector(
@@ -54,6 +59,27 @@ def main():
     
     fps = FPSTracker()
     fps.start()
+
+    # TensorFlow does lazy initialization, need to start computation early
+    rand_rgb = np.random.randint(255, size=(480,640,3),dtype=np.uint8)
+    rand_img = Image.fromarray(rand_rgb)
+    rand_jpg = io.BytesIO()
+    rand_img.save(rand_jpg, format='JPEG', quality=15)
+    fake_message = create_valid_message(rand_jpg.getvalue())
+
+    # TODO: Fix this silliness.
+    msg_bytes = fake_message.to_bytes()
+    msg = CameraFrameMessage.from_bytes(msg_bytes)
+
+    model.enqueue(msg)
+
+    while True:
+        if model.result_ready:
+            out_message, _ = model.latest_result
+            cv2.imshow(WINDOW_NAME, out_message.frame)
+            break
+
+    # Begin processing client frames
     while True:  
         message = frame_server.recv_message()
 
