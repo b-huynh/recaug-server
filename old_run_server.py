@@ -94,6 +94,7 @@ def main():
             debug_q.put((debug_frame, predictions))
 
     def frame_message_handler(client_address, message):
+        #TODO: Propogate client information
         model.enqueue(message.frame, client_address, result_ready_handler)
 
     server.frame_message_event += frame_message_handler
@@ -105,10 +106,100 @@ def main():
             frame, prediction = debug_q.get()
             prediction.visualize(frame)
             cv2.imshow(WINDOW_NAME, frame)
+        
+        # # if not model.out_q.empty():
+        # if model.out_q:
+        #     # image, output, client = model.out_q.get()
+        #     image, output, client = model.out_q.pop()
+        #     predictions = formatter.format(image, output)
+        #     # debug_frame = image.copy()
+        #     predictions.visualize(image)
+        #     cv2.imshow(WINDOW_NAME, image)
+        #     # debug_frame = image.copy()
+        #     # predictions.visualize(debug_frame)
+        #     # cv2.imshow(WINDOW_NAME, debug_frame)
 
             if cv2.waitKey(1) == ord('q'):
                 break
 
+        # if model.result_ready:
+        #     out_message, predictions = model.latest_result
+
+        #     debug_frame = out_message.frame.copy()
+        #     predictions.visualize(debug_frame)
+        #     cv2.imshow(WINDOW_NAME, debug_frame)
+
+            #TODO: Send out back to client
+
+
+    # while True:
+    #     rand_rgb = np.random.randint(255, size=(480,640,3),dtype=np.uint8)
+    #     cv2.imshow(WINDOW_NAME, rand_rgb)
+    #     if cv2.waitKey(1) == ord('q'):
+    #         break
+
+    # confidence_threshold = config['System']['ConfidenceThreshold']
+    # model = ObjectDetector(
+    #     'ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03',
+    #     threshold=confidence_threshold, single_instance=True)
+    # frame_server = FrameServer(config)
+    
+    # fps = FPSTracker()
+    # fps.start()
+
+    # # TensorFlow does lazy initialization, need to start computation early
+    # rand_rgb = np.random.randint(255, size=(480,640,3),dtype=np.uint8)
+    # rand_img = Image.fromarray(rand_rgb)
+    # rand_jpg = io.BytesIO()
+    # rand_img.save(rand_jpg, format='JPEG', quality=15)
+    # fake_message = create_valid_message(rand_jpg.getvalue())
+
+    # # TODO: Fix this silliness.
+    # msg_bytes = fake_message.to_bytes()
+    # msg = CameraFrameMessage.from_bytes(msg_bytes)
+
+    # model.enqueue(msg)
+
+    # while True:
+    #     if model.result_ready:
+    #         out_message, _ = model.latest_result
+    #         cv2.imshow(WINDOW_NAME, out_message.frame)
+    #         break
+
+    # # Begin processing client frames
+    # while True:  
+    #     message = frame_server.recv_message()
+
+    #     model.enqueue(message)
+
+    #     if model.result_ready:
+    #         out_message, predictions = model.latest_result
+    #         predicted_points = predictions.get_predicted_points()
+
+    #         # Add RGB to points
+    #         update_point_colors(out_message, predicted_points)
+
+    #         # Update timestamp
+    #         out_message.update_timestamp('frameProcessedTimestamp')
+
+    #         # Convert message type
+    #         out_message.to_result(predicted_points)
+
+    #         # Send the predictions back to client
+    #         frame_server.send_message(out_message)
+
+    #         # Debug Visualizations
+    #         predictions.visualize(out_message.frame)
+            
+    #         # FPS
+    #         fps.update_count()
+    #         fps.visualize(out_message.frame)
+
+    #         cv2.imshow(WINDOW_NAME, out_message.frame)    
+
+    #     if cv2.waitKey(1) == ord('q'):
+    #         model.close()
+    #         break
 
 if __name__ == '__main__':
     try:

@@ -63,7 +63,6 @@ def object_detection_worker(model_path, input_deque, output_deque, stop_event):
         raise e
 
 class ObjectDetector(object):
-
     def __init__(self, model, threshold = 0.5, single_instance = False):
         self.in_q = collections.deque(maxlen = 1)
         self.out_q = collections.deque(maxlen = 1)
@@ -81,6 +80,12 @@ class ObjectDetector(object):
         self._threshold = threshold
         self._single_instance = single_instance
 
+        self.result_ready_callback = None
+
+    def set_callback(self, callback):
+    #TODO: Change poll based to event based?
+        self.result_ready_callback = callback
+
     @property
     def result_ready(self):
         return self.latest_result != None
@@ -97,8 +102,9 @@ class ObjectDetector(object):
             pass
         return self._latest_result
 
-    def enqueue(self, msg):
+    def enqueue(self, msg, callback):
         self.in_q.append(msg)
+        
 
     def close(self):
         self.stop_event.set()

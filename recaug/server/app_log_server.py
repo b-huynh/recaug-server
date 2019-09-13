@@ -3,6 +3,7 @@ from threading import Thread
 
 class ThreadingUDPLogHandler(BaseRequestHandler):
     def handle(self):
+        print("Received a message")
         data = self.request[0].strip()
         data_string = data.decode('utf-8')
         print("[CLIENT {}]: {}".format(self.client_address[0], data_string))
