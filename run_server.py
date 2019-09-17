@@ -1,4 +1,5 @@
 import argparse
+import functools
 import io
 import json
 import os
@@ -83,18 +84,27 @@ def main():
     )
 
     debug_q = queue.Queue()
-    def result_ready_handler(image, output, client):
+    send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    def result_ready_handler(client_info, image, output, client_address):
         predictions = formatter.format(image, output)
-        if client:
-            # Send back to client
-            pass
+        if client_address:
+            # Send back to clients
+            prediction_message = server.PredictionMessage(client_info)
+            for p in predictions.predictions:
+                prediction_message.add_prediction(p.class_name,
+                    (p.xmin, p.xmax), (p.ymin, p.ymax), (0.0, 0.0, 0.0))
+
+            packet = server.pack(prediction_message)
+            send_sock.sendto(packet, client_address)
         if args.debug:
             debug_frame = image.copy()
             predictions.visualize(debug_frame)
             debug_q.put((debug_frame, predictions))
 
     def frame_message_handler(client_address, message):
-        model.enqueue(message.frame, client_address, result_ready_handler)
+        del message.json["frameBase64"]
+        handler_with_info = functools.partial(result_ready_handler, message.json)
+        model.enqueue(message.frame, client_address, handler_with_info)
 
     server.frame_message_event += frame_message_handler
 

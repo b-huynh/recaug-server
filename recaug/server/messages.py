@@ -10,12 +10,14 @@ from PIL import Image
 
 bufread = lambda buf, start, length: buf[start:start+length]
 
+# (message) -> (bytes)
 def pack(msg):
     json_bytes = json.dumps(msg.json).encode("utf-8")
     size = int(len(bytearray(json_bytes)))
     size_bytes = struct.pack('<i', size)
     return size_bytes + json_bytes
 
+# (bytes) -> (message)
 def unpack(json_bytes):
     size = int.from_bytes(bufread(json_bytes, 0, 4), byteorder='little')
     json_string = bufread(json_bytes, 4, size).decode("utf-8")
@@ -32,8 +34,16 @@ sample_json = 'C:\\Users\\peter\\Projects\\recaug-uwp-client\\Assets\\test.json'
 class Message:
     """
     Do not instantiate yourself. Use unpack to create Message from byte array.
+    {
+        "type": (string),
+        "sessionUUID": (string),
+        "metadataKeys": (list),
+        "metadataVals": (list),
+    }
     """
     def __init__(self, json_obj):
+        assert "type" in json_obj
+        assert "sessionUUID" in json_obj
         self.json = json_obj
     
     @property
@@ -68,7 +78,25 @@ class Message:
         return repr(self.json)
 
 class FrameMessage(Message):
+    """
+    FrameMessage is instantiated with a python dictionary which must
+    have the following parameters:
+    {
+        "type": (string),
+        "sessionUUID": (string),
+        "metadataKeys": (list),
+        "metadataVals": (list),
+        "frameID": (int),
+        "cameraMatrix": (float list of length 16),
+        "projectionMatrix": (float list of length 16),
+        "frameBase64": (string)   
+    }
+    """
     def __init__(self, json_obj):
+        assert "frameID" in json_obj
+        assert "cameraMatrix" in json_obj
+        assert "projectionMatrix" in json_obj
+        assert "frameBase64" in json_obj
         super().__init__(json_obj)
         base64_str = self.json["frameBase64"]
         jpg_bytes = io.BytesIO(base64.b64decode(base64_str))
@@ -80,8 +108,27 @@ class FrameMessage(Message):
         return self._frame
 
 class PredictionMessage(Message):
+    """
+    PredictionMessage is instantiated with a python dictionary which must
+    have the following parameters:
+    {
+        "type": (string),
+        "sessionUUID": (string),
+        "metadataKeys": (list),
+        "metadataVals": (list),
+        "frameID": (int),
+        "cameraMatrix": (float list of length 16),
+        "projectionMatrix": (float list of length 16),
+        "predictions": (list of prediction objects)
+    }
+    """
     def __init__(self, json_obj):
+        assert "frameID" in json_obj
+        assert "cameraMatrix" in json_obj
+        assert "projectionMatrix" in json_obj
         super().__init__(json_obj)
+        if "predictions" not in self.json:
+            self.json["predictions"] = []
 
     @property
     def predictions(self):
@@ -102,7 +149,7 @@ class PredictionMessage(Message):
             "cen_g": rgb[1],
             "cen_b": rgb[2]
         }
-        self.predictions.add(p)
+        self.predictions.append(p)
 
     def remove_prediction(self, idx):
         del self.predictions[idx]
