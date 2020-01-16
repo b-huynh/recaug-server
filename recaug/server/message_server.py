@@ -10,6 +10,7 @@ frame_message_event = Event()
 class ThreadingUDPMessageHandler(BaseRequestHandler):
     def handle(self):
         data = self.request[0]
+        # print("Received data of length: ", len(data))
         message = unpack(data)
 
         # Handle specific message types
@@ -26,7 +27,7 @@ class MessageServer:
         self._port = port
         self._server = ThreadingUDPMessageServer(
             (host, port), ThreadingUDPMessageHandler)
-        self._server.max_packet_size = 8192 * 6
+        self._server.max_packet_size = 8192 * 8
         self._server_thread = Thread(target=self._server.serve_forever)
         self._server_thread.daemon = True
     

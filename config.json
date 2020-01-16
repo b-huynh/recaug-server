@@ -1,16 +1,13 @@
 {
     "System": {
-        "ServerIP": "192.168.100.108",
-        "ClientIP": "192.168.100.121",
+        "ServerIP": "192.168.100.233",
+        "ClientIP": "192.168.100.251",
         "ObjectTrackingPort": "12000",
         "EyeTrackingPort": "13000",
         "DebugLogPort": "9999",
         "ConfidenceThreshold": 0.5,
         "MaxObjectRadius": 0.4,
-        "GeometryCapacity": 300,
-        "FilterWindowSize": 120,
-        "FilterWindowMinCount": 20,
-        "FilterMinDist": 0.2
+        "GeometryCapacity": 300
     },
     "UI": {
         "ConfirmTimeout": 5.0,
@@ -21,7 +18,15 @@
     },
     "Experiment": {
         "SaveLogs": true,
-        "_targetLanguage": "Japanese",
+        "_targetLanguage": "Spanish",
+        "_multitasking": "ManualInSitu"
+    },
+    "Recaug": {
+        "CameraWidth": 896,
+        "CameraHeight": 504,
+        "FilterWindowSize": 120,
+        "FilterWindowMinCount": 5,
+        "FilterMinDist": 0.2,
         "_knownObjects": [
             "backpack",
             "umbrella",
@@ -105,27 +110,18 @@
             "refrigerator"
         ],
         "_validObjects": [
+            "keyboard",
+            "mouse",
+            "bowl",
+            "bottle",
+            "cell phone",
+            "cup",
+            "chair",
+            "tv",
             "backpack",
             "umbrella",
-            "handbag",
-            "sports ball",
-            "tennis racket",
-            "bottle",
-            "wine glass",
-            "cup",
-            "fork",
-            "knife",
-            "spoon",
-            "bowl",
-            "mouse",
-            "remote",
-            "keyboard",
-            "cell phone",
-            "book",
-            "scissors",
-            "toothbrush",
-            "laptop",
-            "tv"
+            "sink",
+            "couch"
         ]
     }
 }

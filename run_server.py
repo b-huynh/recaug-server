@@ -95,6 +95,7 @@ def main():
                     (p.xmin, p.xmax), (p.ymin, p.ymax), (0.0, 0.0, 0.0))
 
             packet = server.pack(prediction_message)
+            # print(len(packet))
             send_sock.sendto(packet, client_address)
         if args.debug:
             debug_frame = image.copy()

@@ -49,8 +49,8 @@ class ThreadedObjectDetector:
     model_dir = os.path.join(os.path.dirname(__file__), 'trained_weights')
 
     def __init__(self, model_name):
-        self.in_q = collections.deque(maxlen = 10)
-        self.out_q = collections.deque(maxlen = 10)
+        self.in_q = collections.deque(maxlen = 1)
+        self.out_q = collections.deque(maxlen = 1)
 
         self._load_model(model_name)
 

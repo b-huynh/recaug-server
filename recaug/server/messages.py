@@ -87,8 +87,8 @@ class FrameMessage(Message):
         "metadataKeys": (list),
         "metadataVals": (list),
         "frameID": (int),
-        "cameraMatrix": (float list of length 16),
-        "projectionMatrix": (float list of length 16),
+        "cameraMatrix": (string),
+        "projectionMatrix": (string),
         "frameBase64": (string)   
     }
     """
@@ -98,6 +98,9 @@ class FrameMessage(Message):
         assert "projectionMatrix" in json_obj
         assert "frameBase64" in json_obj
         super().__init__(json_obj)
+        
+        self.json["type"] = "frame"
+
         base64_str = self.json["frameBase64"]
         jpg_bytes = io.BytesIO(base64.b64decode(base64_str))
         np_frame = np.array(Image.open(jpg_bytes))
@@ -117,9 +120,9 @@ class PredictionMessage(Message):
         "metadataKeys": (list),
         "metadataVals": (list),
         "frameID": (int),
-        "cameraMatrix": (float list of length 16),
-        "projectionMatrix": (float list of length 16),
-        "predictions": (list of prediction objects)
+        "cameraMatrix": (string),
+        "projectionMatrix": (string),
+        "predictions": (list of prediction objects (see add_prediction))
     }
     """
     def __init__(self, json_obj):
@@ -127,16 +130,20 @@ class PredictionMessage(Message):
         assert "cameraMatrix" in json_obj
         assert "projectionMatrix" in json_obj
         super().__init__(json_obj)
+
+        self.json["type"] = "prediction"
+
         if "predictions" not in self.json:
             self.json["predictions"] = []
+
 
     @property
     def predictions(self):
         return self.json["predictions"]
     
     def add_prediction(self, name, x, y, rgb):
-        xcen = int((x[1] - x[0]) / 2)
-        ycen = int((y[1] - y[0]) / 2)
+        xcen = int(x[0] + ((x[1] - x[0]) / 2))
+        ycen = int(y[0] + ((y[1] - y[0]) / 2))
         p = {
             "className": name,
             "xmin": x[0],
