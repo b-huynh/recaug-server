@@ -1,0 +1,9 @@
+event,timestamp,app,action
+appSwitch,4.477945,null,Home,manual
+appSwitch,14.3371,Home,Packer,manual
+appSwitch,83.77786,Packer,Lang. Learn,contextMenu
+appSwitch,103.8281,Lang. Learn,TODO,contextMenu
+appSwitch,123.1791,TODO,Lang. Learn,contextMenu
+appSwitch,170.541,Lang. Learn,Packer,contextMenu
+appSwitch,193.9492,Packer,TODO,contextMenu
+appSwitch,240.1818,TODO,Lang. Learn,contextMenu

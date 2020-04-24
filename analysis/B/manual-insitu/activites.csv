@@ -1,0 +1,37 @@
+event,timestamp,object,app,response
+activity,16.17653,potted plant,TODO,Plus
+activity,18.94038,teddy bear,TODO,Plus
+activity,22.60338,scissors,TODO,Plus
+activity,26.73323,clock,Packer,Create Ticket
+activity,32.0624,PhysicalObject(Clone),Lang. Learn,Good
+activity,35.42711,PhysicalObject(Clone),Lang. Learn,Good
+activity,44.55225,potted plant,Packer,Create Ticket
+activity,47.92406,smartphone,Packer,Create Ticket
+activity,49.64746,keyboard,Packer,Create Ticket
+activity,51.51285,tv,Packer,Create Ticket
+activity,60.04144,smartphone,TODO,Plus
+activity,63.54116,book,TODO,Check
+activity,67.93241,book,Packer,Create Ticket
+activity,69.93093,mouse,Packer,Create Ticket
+activity,76.09305,PhysicalObject(Clone),Lang. Learn,Easy
+activity,90.64646,PhysicalObject(Clone),Lang. Learn,Good
+activity,95.44251,PhysicalObject(Clone),Lang. Learn,Easy
+activity,100.6127,PhysicalObject(Clone),Lang. Learn,Easy
+activity,124.452,wine glass,TODO,Plus
+activity,128.7506,PhysicalObject(Clone),Lang. Learn,Easy
+activity,130.8797,PhysicalObject(Clone),Lang. Learn,Good
+activity,135.3756,PhysicalObject(Clone),Lang. Learn,Good
+activity,139.7729,donut,TODO,Plus
+activity,142.5688,apple,TODO,Plus
+activity,145.5346,airplane,TODO,Plus
+activity,152.1612,tennis racket,TODO,Plus
+activity,155.2263,sports ball,TODO,Plus
+activity,160.3561,cup,TODO,Plus
+activity,174.0096,PhysicalObject(Clone),Lang. Learn,Easy
+activity,178.9071,cup,Packer,Create Ticket
+activity,181.9695,car,Packer,Remove
+activity,186.7998,PhysicalObject(Clone),Lang. Learn,Easy
+activity,193.8985,wine glass,Packer,Remove
+activity,196.4619,apple,Packer,Create Ticket
+activity,209.4806,chair,Packer,Create Ticket
+activity,216.175,PhysicalObject(Clone),Lang. Learn,Easy

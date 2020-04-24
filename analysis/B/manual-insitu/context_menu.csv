@@ -1,0 +1,22 @@
+event,timestamp,app,action
+contextMenu,23.96918,clock,open
+contextMenu,27.89984,clock,open
+contextMenu,40.02362,potted plant,open
+contextMenu,53.11218,tv,open
+contextMenu,55.54642,smartphone,open
+contextMenu,64.66843,book,open
+contextMenu,72.06142,book,open
+contextMenu,84.71925,sports ball,open
+contextMenu,85.21877,sports ball,close
+contextMenu,96.70736,zebra,open
+contextMenu,97.60834,zebra,close
+contextMenu,120.5602,wine glass,open
+contextMenu,125.2857,bottle,open
+contextMenu,137.2068,apple,open
+contextMenu,156.2601,sports ball,open
+contextMenu,157.8562,sports ball,close
+contextMenu,168.3814,giraffe,open
+contextMenu,175.8756,cup,open
+contextMenu,183.1364,car,open
+contextMenu,189.8965,wine glass,open
+contextMenu,210.4474,chair,open

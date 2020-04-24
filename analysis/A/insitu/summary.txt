@@ -1,0 +1,4 @@
+Start: 4.482398 seconds
+Complete: 298.7899 seconds
+Total: 294.307502 seconds
+Detections Complete: 240.48710200000002 seconds

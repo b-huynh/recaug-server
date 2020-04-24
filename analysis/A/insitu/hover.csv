@@ -1,0 +1,93 @@
+event,timestamp,app,action
+hover,10.34819,keyboard,on
+hover,10.44684,keyboard,off
+hover,11.38221,tv,on
+hover,11.64767,tv,off
+hover,12.0121,tv,on
+hover,12.6962,tv,off
+hover,15.00034,mouse,on
+hover,15.16061,mouse,off
+hover,15.46122,mouse,on
+hover,16.03524,mouse,on
+hover,16.26216,mouse,off
+hover,16.89078,book,on
+hover,17.12751,book,off
+hover,17.42772,book,on
+hover,18.32475,book,off
+hover,34.61142,chair,on
+hover,35.07692,chair,on
+hover,35.87666,chair,off
+hover,44.70198,wine glass,on
+hover,44.80687,wine glass,off
+hover,51.96386,wine glass,on
+hover,52.83083,wine glass,off
+hover,58.32446,cup,on
+hover,58.7938,cup,off
+hover,59.03174,cup,on
+hover,59.46433,cup,off
+hover,64.92131,cup,on
+hover,65.05453,cup,off
+hover,66.25075,cup,on
+hover,67.21808,cup,off
+hover,68.48434,cup,on
+hover,68.58192,cup,off
+hover,76.57703,car,on
+hover,77.27545,car,off
+hover,79.1749,car,on
+hover,79.30667,car,off
+hover,95.86587,sports ball,on
+hover,96.0263,sports ball,off
+hover,97.42593,tv,on
+hover,97.55972,tv,on
+hover,98.52586,tv,off
+hover,99.39168,keyboard,on
+hover,99.43137,keyboard,off
+hover,99.79473,keyboard,on
+hover,100.6922,keyboard,off
+hover,101.6223,smartphone,on
+hover,101.7557,smartphone,on
+hover,102.0566,smartphone,on
+hover,102.3561,smartphone,on
+hover,102.8613,smartphone,off
+hover,120.072,book,on
+hover,120.1454,book,off
+hover,123.205,scissors,on
+hover,123.2375,scissors,off
+hover,141.7875,apple,on
+hover,142.0227,apple,on
+hover,142.2886,apple,on
+hover,142.5882,apple,off
+hover,147.0835,apple,on
+hover,147.8849,apple,off
+hover,152.9445,apple,on
+hover,153.4797,apple,off
+hover,168.4334,donut,on
+hover,168.5681,donut,off
+hover,170.7659,donut,on
+hover,170.8797,donut,off
+hover,176.1273,donut,on
+hover,176.9256,donut,off
+hover,178.0643,donut,on
+hover,178.1585,donut,off
+hover,198.5079,giraffe,on
+hover,198.8138,giraffe,on
+hover,198.9087,giraffe,off
+hover,207.9076,airplane,on
+hover,208.2012,airplane,on
+hover,208.8057,airplane,off
+hover,225.4531,tennis racket,on
+hover,225.5179,tennis racket,off
+hover,225.7508,tennis racket,on
+hover,227.2226,tennis racket,off
+hover,240.7061,smartphone,on
+hover,240.7756,smartphone,off
+hover,241.806,scissors,on
+hover,242.4434,scissors,off
+hover,245.5085,scissors,on
+hover,245.6035,scissors,off
+hover,261.3576,book,on
+hover,261.6864,book,off
+hover,276.476,potted plant,on
+hover,277.6428,potted plant,off
+hover,283.0683,scissors,on
+hover,283.6352,scissors,off

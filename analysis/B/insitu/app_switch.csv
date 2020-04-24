@@ -1,0 +1,11 @@
+event,timestamp,app,action
+appSwitch,4.479078,null,Home,manual
+appSwitch,10.03479,Home,TODO,contextMenu
+appSwitch,27.88975,TODO,Packer,contextMenu
+appSwitch,48.53579,Packer,TODO,contextMenu
+appSwitch,68.05598,TODO,Lang. Learn,contextMenu
+appSwitch,85.44438,Lang. Learn,TODO,contextMenu
+appSwitch,116.5782,TODO,Packer,contextMenu
+appSwitch,123.6064,Packer,Lang. Learn,contextMenu
+appSwitch,204.4877,Lang. Learn,Packer,contextMenu
+appSwitch,223.0038,Packer,TODO,contextMenu

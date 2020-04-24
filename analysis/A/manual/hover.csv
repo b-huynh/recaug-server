@@ -1,0 +1,145 @@
+event,timestamp,app,action
+hover,10.70186,tv,on
+hover,10.80147,tv,off
+hover,10.93413,tv,on
+hover,11.66637,tv,on
+hover,11.83222,tv,off
+hover,18.12764,book,on
+hover,18.26186,book,off
+hover,18.32802,book,on
+hover,18.36284,book,off
+hover,29.15244,tv,on
+hover,32.08379,tv,off
+hover,33.71639,clock,on
+hover,33.75058,clock,off
+hover,57.29539,tv,on
+hover,57.66166,tv,on
+hover,57.89582,tv,off
+hover,62.45832,tv,on
+hover,62.55817,tv,off
+hover,63.12359,tv,on
+hover,63.3227,tv,off
+hover,63.72246,tv,on
+hover,64.72341,tv,off
+hover,65.12338,potted plant,on
+hover,65.38746,potted plant,on
+hover,66.05371,potted plant,off
+hover,83.27386,wine glass,on
+hover,83.43987,wine glass,off
+hover,84.73884,cup,on
+hover,84.84328,cup,off
+hover,95.0979,car,on
+hover,95.23097,car,off
+hover,95.66437,car,on
+hover,96.02983,car,off
+hover,101.4261,cup,on
+hover,101.4584,cup,off
+hover,102.0608,cup,on
+hover,102.226,cup,on
+hover,102.3576,cup,off
+hover,107.7878,wine glass,on
+hover,107.8196,wine glass,off
+hover,113.8802,sports ball,on
+hover,113.9152,sports ball,off
+hover,115.7454,mouse,on
+hover,115.8132,mouse,off
+hover,117.3116,scissors,on
+hover,117.3833,scissors,off
+hover,118.0454,teddy bear,on
+hover,118.1782,teddy bear,off
+hover,122.5746,cup,on
+hover,122.6728,cup,off
+hover,134.3312,cup,on
+hover,135.097,cup,on
+hover,135.2652,cup,off
+hover,141.7246,cup,on
+hover,141.7573,cup,off
+hover,150.5851,cup,on
+hover,150.9509,cup,off
+hover,151.4158,airplane,on
+hover,151.4505,airplane,off
+hover,151.5492,airplane,on
+hover,151.718,airplane,off
+hover,168.204,keyboard,on
+hover,168.3025,keyboard,off
+hover,168.5037,keyboard,on
+hover,169.7402,keyboard,off
+hover,171.2356,tv,on
+hover,171.569,tv,off
+hover,172.0664,tv,on
+hover,172.1667,tv,off
+hover,179.0273,teddy bear,on
+hover,179.0617,teddy bear,off
+hover,179.2958,teddy bear,on
+hover,179.4291,teddy bear,off
+hover,198.9085,potted plant,on
+hover,199.5441,potted plant,off
+hover,204.2717,book,on
+hover,204.3703,book,off
+hover,208.467,book,on
+hover,208.5017,book,off
+hover,219.8242,cup,on
+hover,220.0238,cup,off
+hover,221.2912,cup,on
+hover,222.5237,cup,off
+hover,223.4903,cup,on
+hover,223.8242,cup,off
+hover,224.356,cup,on
+hover,224.8224,cup,on
+hover,225.2551,cup,off
+hover,233.414,cup,on
+hover,233.4816,cup,off
+hover,239.7073,cup,on
+hover,239.8764,cup,off
+hover,240.2763,cup,on
+hover,240.9771,cup,off
+hover,272.1162,smartphone,on
+hover,272.15,smartphone,off
+hover,297.7326,donut,on
+hover,297.8607,donut,off
+hover,322.3402,giraffe,on
+hover,322.6737,giraffe,off
+hover,330.7995,donut,on
+hover,330.9054,donut,off
+hover,355.6787,donut,on
+hover,355.7758,donut,off
+hover,356.1851,donut,on
+hover,357.0461,donut,on
+hover,357.7107,donut,off
+hover,370.8965,book,on
+hover,371.0292,book,off
+hover,373.6635,apple,on
+hover,373.7935,apple,on
+hover,374.0275,apple,off
+hover,374.2177,apple,on
+hover,374.5273,apple,off
+hover,379.9635,donut,on
+hover,379.9885,donut,off
+hover,381.8549,donut,on
+hover,381.8865,donut,off
+hover,388.7499,book,on
+hover,388.9492,book,off
+hover,389.3185,book,on
+hover,389.4817,book,off
+hover,412.7633,apple,on
+hover,412.9297,apple,off
+hover,413.5956,donut,on
+hover,413.6647,donut,off
+hover,413.8271,donut,on
+hover,414.0288,donut,off
+hover,425.1499,apple,on
+hover,425.2206,apple,off
+hover,437.5731,apple,on
+hover,437.7097,apple,off
+hover,438.7065,donut,on
+hover,438.7747,donut,off
+hover,439.1719,donut,on
+hover,439.2382,donut,off
+hover,458.1596,apple,on
+hover,458.3266,apple,off
+hover,465.7178,apple,on
+hover,465.7836,apple,off
+hover,487.5357,apple,on
+hover,487.565,apple,off
+hover,487.8681,apple,on
+hover,487.8988,apple,off

@@ -1,0 +1,33 @@
+event,timestamp,app,action
+appUsage,4.482398,Home,start
+appUsage,4.482398,TODO,stop
+appUsage,4.482398,Packer,stop
+appUsage,4.482398,Lang. Learn,stop
+appUsage,4.482398,Home,start
+appUsage,21.82408,Home,stop
+appUsage,21.82408,Lang. Learn,start
+appUsage,37.11036,Lang. Learn,stop
+appUsage,37.11036,Packer,start
+appUsage,53.89694,Packer,stop
+appUsage,53.89694,TODO,start
+appUsage,64.21966,TODO,stop
+appUsage,64.21966,Lang. Learn,start
+appUsage,67.98921,Lang. Learn,stop
+appUsage,67.98921,Packer,start
+appUsage,78.60811,Packer,stop
+appUsage,78.60811,Lang. Learn,start
+appUsage,104.9561,Lang. Learn,stop
+appUsage,104.9561,Packer,start
+appUsage,149.2158,Packer,stop
+appUsage,149.2158,Lang. Learn,start
+appUsage,154.9458,Lang. Learn,stop
+appUsage,154.9458,TODO,start
+appUsage,177.6596,TODO,stop
+appUsage,177.6596,Lang. Learn,start
+appUsage,228.6528,Lang. Learn,stop
+appUsage,228.6528,TODO,start
+appUsage,278.6118,TODO,stop
+appUsage,278.6118,Packer,start
+appUsage,284.7006,Packer,stop
+appUsage,284.7006,Lang. Learn,start
+appUsage, 298.7899,Lang. Learn,stop

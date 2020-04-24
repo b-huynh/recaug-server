@@ -1,0 +1,20 @@
+event,timestamp,app,action
+contextMenu,8.170328,teddy bear,open
+contextMenu,25.52044,keyboard,open
+contextMenu,47.57209,smartphone,open
+contextMenu,66.45503,airplane,open
+contextMenu,78.77898,zebra,open
+contextMenu,82.14224,zebra,close
+contextMenu,84.13927,sports ball,open
+contextMenu,106.9529,sports ball,open
+contextMenu,108.1862,sports ball,close
+contextMenu,111.351,cup,open
+contextMenu,115.4808,wine glass,open
+contextMenu,122.7094,car,open
+contextMenu,175.9118,smartphone,open
+contextMenu,180.872,mouse,open
+contextMenu,181.6724,book,open
+contextMenu,199.9562,giraffe,open
+contextMenu,200.6555,giraffe,close
+contextMenu,203.4862,clock,open
+contextMenu,221.572,donut,open

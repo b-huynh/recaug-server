@@ -1,0 +1,93 @@
+event,timestamp,app,action
+hover,7.537235,teddy bear,on
+hover,7.603891,teddy bear,off
+hover,7.869982,teddy bear,on
+hover,8.036588,teddy bear,on
+hover,8.570058,teddy bear,off
+hover,16.13043,clock,on
+hover,16.26394,clock,off
+hover,21.6262,tv,on
+hover,21.76,tv,off
+hover,21.8589,tv,on
+hover,21.99261,tv,off
+hover,23.85643,book,on
+hover,23.88861,book,off
+hover,24.78769,keyboard,on
+hover,25.85615,keyboard,off
+hover,37.3129,tv,on
+hover,37.34565,tv,off
+hover,41.84225,potted plant,on
+hover,42.01053,potted plant,on
+hover,42.24314,potted plant,off
+hover,46.83703,smartphone,on
+hover,46.90939,smartphone,off
+hover,47.33753,smartphone,on
+hover,48.04172,smartphone,off
+hover,56.06387,clock,on
+hover,56.16179,clock,off
+hover,56.42796,clock,on
+hover,56.49499,clock,off
+hover,58.76084,cup,on
+hover,58.79388,cup,off
+hover,59.06213,cup,on
+hover,59.12643,cup,off
+hover,59.72725,cup,on
+hover,59.75888,cup,off
+hover,60.19246,bottle,on
+hover,60.29197,bottle,off
+hover,60.52626,bottle,on
+hover,60.72678,bottle,off
+hover,61.65915,bottle,on
+hover,61.79565,bottle,off
+hover,65.95583,airplane,on
+hover,67.05457,airplane,off
+hover,67.35425,airplane,on
+hover,67.65415,airplane,off
+hover,73.94727,bottle,on
+hover,74.01446,bottle,off
+hover,78.44468,zebra,on
+hover,78.60969,zebra,on
+hover,78.91072,zebra,off
+hover,83.67411,sports ball,on
+hover,84.53993,sports ball,off
+hover,92.16592,sports ball,on
+hover,92.40216,sports ball,off
+hover,93.36323,sports ball,on
+hover,93.59931,sports ball,off
+hover,93.76664,cup,on
+hover,94.03304,cup,off
+hover,102.5264,tennis racket,on
+hover,102.7256,tennis racket,off
+hover,107.2214,cup,on
+hover,107.4552,cup,off
+hover,109.0517,cup,on
+hover,109.553,cup,off
+hover,110.818,cup,on
+hover,112.3163,cup,off
+hover,112.5502,cup,on
+hover,112.7518,cup,off
+hover,112.8834,bottle,on
+hover,113.2472,bottle,off
+hover,115.0821,wine glass,on
+hover,116.0494,wine glass,off
+hover,116.9466,wine glass,on
+hover,117.0135,wine glass,off
+hover,122.3092,car,on
+hover,123.2413,car,off
+hover,134.7944,chair,on
+hover,135.1323,chair,off
+hover,157.8455,apple,on
+hover,183.4712,donut,on
+hover,183.5364,donut,off
+hover,193.4621,giraffe,on
+hover,202.3552,clock,on
+hover,202.5546,clock,off
+hover,202.6881,clock,on
+hover,202.7545,clock,off
+hover,203.4202,clock,on
+hover,203.9209,clock,off
+hover,217.9757,apple,on
+hover,218.142,apple,off
+hover,220.806,donut,on
+hover,221.3398,donut,on
+hover,221.9703,donut,off
