@@ -1,0 +1,40 @@
+event,timestamp,app,action
+contextMenu,11.27064,teddy bear,open
+contextMenu,17.89858,scissors,open
+contextMenu,18.44812,scissors,close
+contextMenu,22.02827,keyboard,open
+contextMenu,27.55729,book,open
+contextMenu,33.6363,book,open
+contextMenu,38.84845,mouse,open
+contextMenu,44.82681,tv,open
+contextMenu,45.35884,tv,close
+contextMenu,51.20385,potted plant,open
+contextMenu,61.61186,smartphone,open
+contextMenu,67.14057,teddy bear,open
+contextMenu,68.12334,scissors,open
+contextMenu,72.13685,clock,open
+contextMenu,96.68287,sports ball,open
+contextMenu,107.9899,airplane,open
+contextMenu,109.3558,zebra,open
+contextMenu,111.0545,sports ball,open
+contextMenu,116.9657,tennis racket,open
+contextMenu,118.6478,car,open
+contextMenu,130.7748,wine glass,open
+contextMenu,131.7206,bottle,open
+contextMenu,132.6031,cup,open
+contextMenu,133.6189,car,open
+contextMenu,156.4989,apple,open
+contextMenu,163.294,apple,open
+contextMenu,167.5238,donut,open
+contextMenu,173.9005,chair,open
+contextMenu,178.6808,keyboard,open
+contextMenu,179.7631,mouse,open
+contextMenu,180.6124,book,open
+contextMenu,181.5786,tv,open
+contextMenu,182.7276,potted plant,open
+contextMenu,183.6771,smartphone,open
+contextMenu,184.6257,teddy bear,open
+contextMenu,185.5581,scissors,open
+contextMenu,188.5389,clock,open
+contextMenu,191.3032,apple,open
+contextMenu,191.9366,donut,open

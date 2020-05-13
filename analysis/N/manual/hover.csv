@@ -1,0 +1,150 @@
+event,timestamp,app,action
+hover,11.58574,chair,on
+hover,11.6361,chair,off
+hover,13.88385,chair,on
+hover,13.91678,chair,off
+hover,14.31635,chair,on
+hover,14.36653,chair,off
+hover,15.04931,chair,on
+hover,15.48198,chair,on
+hover,16.56456,chair,on
+hover,16.88096,chair,off
+hover,29.68794,keyboard,on
+hover,29.73799,keyboard,off
+hover,30.53746,keyboard,on
+hover,30.57033,keyboard,off
+hover,37.04783,chair,on
+hover,37.46469,chair,off
+hover,38.41459,mouse,on
+hover,38.64671,mouse,off
+hover,44.87552,mouse,on
+hover,45.22575,mouse,off
+hover,55.66585,book,on
+hover,55.73224,book,off
+hover,84.60809,tv,on
+hover,84.69096,tv,off
+hover,88.52111,teddy bear,on
+hover,88.6217,teddy bear,off
+hover,109.8048,potted plant,on
+hover,109.9046,potted plant,off
+hover,126.0081,airplane,on
+hover,126.1907,airplane,off
+hover,127.2907,airplane,on
+hover,127.5398,airplane,off
+hover,138.681,bottle,on
+hover,138.8472,bottle,off
+hover,138.9138,cup,on
+hover,139.0302,cup,off
+hover,139.447,cup,on
+hover,139.7795,cup,off
+hover,144.4585,bottle,on
+hover,145.1749,bottle,on
+hover,145.3404,bottle,off
+hover,145.4916,bottle,on
+hover,146.1074,bottle,off
+hover,150.6358,cup,on
+hover,151.3358,cup,off
+hover,152.9347,bottle,on
+hover,153.0343,bottle,off
+hover,153.4505,bottle,on
+hover,153.6339,bottle,off
+hover,157.0482,airplane,on
+hover,157.1809,airplane,on
+hover,157.3311,airplane,off
+hover,158.9632,airplane,on
+hover,159.6121,airplane,off
+hover,159.8285,airplane,on
+hover,159.9119,airplane,off
+hover,162.2435,zebra,on
+hover,162.4432,zebra,on
+hover,163.1924,zebra,on
+hover,163.925,zebra,off
+hover,171.2023,tennis racket,on
+hover,171.6523,tennis racket,off
+hover,191.1857,car,on
+hover,191.4018,car,off
+hover,197.7466,cup,on
+hover,197.9463,cup,on
+hover,199.0624,cup,off
+hover,199.2955,bottle,on
+hover,200.3115,bottle,off
+hover,200.5452,cup,on
+hover,201.8597,cup,off
+hover,206.0562,wine glass,on
+hover,207.5223,wine glass,off
+hover,208.2377,cup,on
+hover,208.3876,cup,off
+hover,208.6873,cup,on
+hover,208.8715,cup,on
+hover,209.0868,cup,off
+hover,210.236,bottle,on
+hover,210.3228,bottle,off
+hover,214.383,wine glass,on
+hover,215.0157,wine glass,off
+hover,218.7453,bottle,on
+hover,218.9949,bottle,off
+hover,219.7112,cup,on
+hover,219.828,cup,off
+hover,220.727,cup,on
+hover,221.4602,cup,off
+hover,230.653,cup,on
+hover,230.7861,cup,off
+hover,231.6352,car,on
+hover,231.7847,car,off
+hover,232.9175,car,on
+hover,234.3661,car,off
+hover,242.7596,cup,on
+hover,242.9434,cup,off
+hover,243.0762,cup,on
+hover,243.326,cup,off
+hover,243.8755,cup,on
+hover,244.2082,cup,off
+hover,256.6815,zebra,on
+hover,257.1315,zebra,off
+hover,265.6581,giraffe,on
+hover,265.8577,giraffe,on
+hover,266.1406,giraffe,off
+hover,270.3701,giraffe,on
+hover,270.5698,giraffe,off
+hover,270.7191,giraffe,on
+hover,270.9861,giraffe,off
+hover,271.3188,giraffe,on
+hover,271.519,giraffe,off
+hover,272.8178,bottle,on
+hover,272.8848,bottle,off
+hover,273.4673,bottle,on
+hover,273.5508,bottle,off
+hover,278.5796,bottle,on
+hover,278.779,bottle,off
+hover,284.5411,airplane,on
+hover,284.8408,airplane,on
+hover,285.7064,airplane,off
+hover,290.8526,apple,on
+hover,291.1522,apple,off
+hover,298.3126,donut,on
+hover,298.4129,donut,off
+hover,334.9809,scissors,on
+hover,335.0141,scissors,off
+hover,348.503,keyboard,on
+hover,348.6196,keyboard,off
+hover,349.8688,keyboard,on
+hover,351.068,keyboard,off
+hover,353.4822,keyboard,on
+hover,354.5982,keyboard,off
+hover,358.6113,keyboard,on
+hover,358.6783,keyboard,off
+hover,363.957,keyboard,on
+hover,365.2224,keyboard,on
+hover,365.3223,keyboard,off
+hover,372.8501,keyboard,on
+hover,372.8669,keyboard,off
+hover,376.2473,potted plant,on
+hover,376.347,potted plant,off
+hover,376.6636,potted plant,on
+hover,376.8303,potted plant,off
+hover,403.5236,clock,on
+hover,403.64,clock,off
+hover,403.7903,clock,on
+hover,404.24,clock,off
+hover,439.1719,smartphone,on
+hover,439.2382,smartphone,off

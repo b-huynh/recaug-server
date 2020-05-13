@@ -1,0 +1,29 @@
+event,timestamp,app,action
+contextMenu,21.94569,tv,open
+contextMenu,38.34816,mouse,open
+contextMenu,38.93073,mouse,close
+contextMenu,39.7466,book,open
+contextMenu,45.82529,book,open
+contextMenu,61.16322,smartphone,open
+contextMenu,87.74089,clock,open
+contextMenu,88.05682,clock,close
+contextMenu,88.65491,clock,open
+contextMenu,97.56567,clock,open
+contextMenu,107.2237,cup,open
+contextMenu,107.5073,cup,close
+contextMenu,107.9399,cup,open
+contextMenu,131.9035,zebra,open
+contextMenu,132.8524,airplane,open
+contextMenu,133.1356,airplane,close
+contextMenu,133.6183,airplane,open
+contextMenu,148.9055,tennis racket,open
+contextMenu,149.9714,car,open
+contextMenu,154.5676,sports ball,open
+contextMenu,155.4672,cup,open
+contextMenu,161.7611,apple,open
+contextMenu,188.5721,chair,open
+contextMenu,200.35,car,open
+contextMenu,205.5115,sports ball,open
+contextMenu,206.0784,cup,open
+contextMenu,262.5481,donut,open
+contextMenu,267.8596,chair,open

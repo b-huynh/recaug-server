@@ -1,0 +1,51 @@
+
+------------------------------
+Summarizing task:  manual
+Total Time: 443.94 s
+Objects Time: 247.31 s
+
+Avg app session: 41.31 s
+LL Usage: 157.90 s,  35.57%
+LL Avg: 39.48 s
+TD Usage: 121.23 s,  27.31%
+TD Avg: 40.41 s
+WK Usage: 133.99 s,  30.18%
+WK Avg: 44.66 s
+
+Total Switches: 12
+Per app switches:  LL 4, TD 4, WK 4
+Per type switches: Manual 12 Insitu 0
+
+------------------------------
+Summarizing task:  insitu
+Total Time: 293.23 s
+Objects Time: 246.54 s
+
+Avg app session: 21.19 s
+LL Usage: 66.22 s,  22.58%
+LL Avg: 13.24 s
+TD Usage: 69.63 s,  23.74%
+TD Avg: 23.21 s
+WK Usage: 139.65 s,  47.62%
+WK Avg: 27.93 s
+
+Total Switches: 13
+Per app switches:  LL 5, TD 3, WK 5
+Per type switches: Manual 0 Insitu 13
+
+------------------------------
+Summarizing task:  manual-insitu
+Total Time: 267.63 s
+Objects Time: 181.15 s
+
+Avg app session: 17.40 s
+LL Usage: 66.61 s,  24.89%
+LL Avg: 11.10 s
+TD Usage: 55.14 s,  20.60%
+TD Avg: 13.78 s
+WK Usage: 139.27 s,  52.04%
+WK Avg: 27.85 s
+
+Total Switches: 15
+Per app switches:  LL 6, TD 4, WK 5
+Per type switches: Manual 4 Insitu 11

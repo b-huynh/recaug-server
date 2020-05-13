@@ -1,0 +1,80 @@
+event,timestamp,app,action
+hover,19.92979,teddy bear,on
+hover,20.06295,teddy bear,off
+hover,21.07882,tv,on
+hover,21.24511,tv,off
+hover,21.67798,tv,on
+hover,21.9114,tv,on
+hover,22.22801,tv,off
+hover,32.80291,potted plant,on
+hover,32.83638,potted plant,off
+hover,35.11761,potted plant,on
+hover,35.36769,potted plant,off
+hover,39.48048,book,on
+hover,40.19672,book,off
+hover,45.55847,book,on
+hover,45.67546,book,on
+hover,46.29111,book,off
+hover,47.30714,book,on
+hover,47.42431,book,off
+hover,58.26498,smartphone,on
+hover,58.36484,smartphone,off
+hover,60.81241,smartphone,on
+hover,61.74493,smartphone,off
+hover,79.04669,clock,on
+hover,79.19654,clock,off
+hover,79.37939,clock,on
+hover,79.41312,clock,off
+hover,86.7404,clock,on
+hover,87.00729,clock,off
+hover,87.74089,clock,on
+hover,87.88961,clock,on
+hover,88.42273,clock,on
+hover,88.92207,clock,off
+hover,89.50533,clock,on
+hover,89.5384,clock,off
+hover,99.41382,airplane,on
+hover,99.46381,airplane,off
+hover,104.7088,cup,on
+hover,105.1585,cup,off
+hover,105.3081,airplane,on
+hover,105.3915,airplane,off
+hover,105.5913,airplane,on
+hover,105.6412,airplane,off
+hover,105.741,sports ball,on
+hover,105.7752,sports ball,off
+hover,105.8581,tennis racket,on
+hover,106.0574,tennis racket,on
+hover,106.1577,tennis racket,off
+hover,106.7239,cup,on
+hover,107.1569,cup,on
+hover,108.2563,cup,off
+hover,117.532,car,on
+hover,117.6483,car,off
+hover,127.1402,airplane,on
+hover,127.2404,airplane,off
+hover,132.7856,airplane,on
+hover,134.0678,airplane,off
+hover,134.8675,airplane,on
+hover,134.9676,airplane,off
+hover,144.0096,car,on
+hover,144.077,car,off
+hover,149.6219,car,on
+hover,150.3376,car,off
+hover,156.0665,giraffe,on
+hover,156.6329,giraffe,off
+hover,161.4612,apple,on
+hover,162.2439,apple,off
+hover,163.7264,donut,on
+hover,163.8096,donut,off
+hover,177.5644,apple,on
+hover,177.6982,apple,off
+hover,177.964,apple,on
+hover,178.064,apple,off
+hover,187.289,chair,on
+hover,187.6554,chair,on
+hover,187.8056,chair,off
+hover,188.3548,chair,on
+hover,189.1378,chair,off
+hover,193.7505,chair,on
+hover,194.2339,chair,off

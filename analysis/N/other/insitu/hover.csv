@@ -1,0 +1,61 @@
+event,timestamp,app,action
+hover,10.9207,teddy bear,on
+hover,11.82001,teddy bear,off
+hover,17.54812,scissors,on
+hover,18.66413,scissors,off
+hover,21.64574,keyboard,on
+hover,22.62798,keyboard,off
+hover,27.1735,book,on
+hover,27.30685,book,on
+hover,28.20687,book,off
+hover,33.08541,book,on
+hover,33.15217,book,off
+hover,33.3024,book,on
+hover,33.86869,book,off
+hover,34.98434,book,on
+hover,35.08443,book,off
+hover,38.41433,mouse,on
+hover,39.38074,mouse,off
+hover,40.17997,mouse,on
+hover,40.24704,mouse,off
+hover,45.82523,potted plant,on
+hover,45.90854,potted plant,off
+hover,50.88754,potted plant,on
+hover,51.80356,potted plant,off
+hover,58.06516,scissors,on
+hover,58.14824,scissors,off
+hover,61.29499,smartphone,on
+hover,62.0951,smartphone,off
+hover,67.79021,scissors,on
+hover,68.28973,scissors,off
+hover,68.4068,scissors,on
+hover,68.52315,scissors,off
+hover,71.80303,clock,on
+hover,72.53651,clock,off
+hover,82.81109,bottle,on
+hover,83.09412,bottle,on
+hover,83.17744,bottle,off
+hover,87.52374,bottle,on
+hover,87.55738,bottle,off
+hover,95.75069,sports ball,on
+hover,96.08284,sports ball,off
+hover,96.46664,sports ball,on
+hover,97.18266,sports ball,off
+hover,117.9479,car,on
+hover,119.481,car,off
+hover,128.373,wine glass,on
+hover,128.4228,wine glass,off
+hover,133.3178,car,on
+hover,134.1017,car,off
+hover,143.5766,donut,on
+hover,143.6269,donut,off
+hover,153.6019,apple,on
+hover,154.0518,apple,off
+hover,156.1498,apple,on
+hover,156.933,apple,off
+hover,162.7273,apple,on
+hover,163.6429,apple,off
+hover,164.6755,apple,on
+hover,164.7422,apple,off
+hover,173.5672,chair,on
+hover,174.4003,chair,off

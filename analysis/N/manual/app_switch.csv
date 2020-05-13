@@ -1,0 +1,14 @@
+event,timestamp,app,action
+appSwitch,4.220472,null,Home,manual
+appSwitch,21.44386,Home,Packer,manual
+appSwitch,58.56311,Packer,Lang. Learn,manual
+appSwitch,95.18355,Lang. Learn,TODO,manual
+appSwitch,183.5246,TODO,Packer,manual
+appSwitch,226.8555,Packer,Lang. Learn,manual
+appSwitch,311.7345,Lang. Learn,TODO,manual
+appSwitch,341.726,TODO,Lang. Learn,manual
+appSwitch,368.8197,Lang. Learn,TODO,manual
+appSwitch,371.7178,TODO,Packer,manual
+appSwitch,425.2565,Packer,Lang. Learn,manual
+appSwitch,434.565,Lang. Learn,TODO,manual
+appSwitch,444.3288,TODO,Packer,manual

@@ -1,0 +1,30 @@
+event,timestamp,app,action
+hover,7.58275,teddy bear,on
+hover,7.616021,teddy bear,off
+hover,46.73403,potted plant,on
+hover,46.78378,potted plant,off
+hover,95.46081,airplane,on
+hover,95.52631,airplane,off
+hover,102.0548,bottle,on
+hover,102.4063,bottle,on
+hover,103.9198,bottle,off
+hover,121.8045,wine glass,on
+hover,122.1371,wine glass,off
+hover,133.0115,tennis racket,on
+hover,133.0448,tennis racket,off
+hover,140.9384,giraffe,on
+hover,141.4547,giraffe,off
+hover,142.1707,giraffe,on
+hover,143.9688,giraffe,off
+hover,157.5903,car,on
+hover,157.6407,car,off
+hover,168.1658,wine glass,on
+hover,168.2491,wine glass,off
+hover,172.7612,apple,on
+hover,172.8608,apple,off
+hover,207.1824,apple,on
+hover,207.2988,apple,off
+hover,207.3659,donut,on
+hover,207.4657,donut,off
+hover,252.9267,chair,on
+hover,253.6424,chair,off
